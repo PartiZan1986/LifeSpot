@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+
+<html lang="ru">
+<!-- Изменено на русский язык контента -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Добавлен важный meta-тег -->
+    <title>LifeSpot Информация о нас</title> <!-- Уточнен заголовок -->
+    <link href="../Static/CSS/index.css" rel="stylesheet">
+    <script src="../Static/JS/about.js" defer></script> <!-- Упрощен атрибут type -->
+    <title>Форма отзыва</title>
+    
+</head>
+
+<body>
+    <aside id="sidebar">
+        <div class="navbar">
+            <p>Все трансляции</p>
+            <p>О проекте</p>
+        </div>
+    </aside>
+
+    <header class="main-header">
+        <h1>LifeSpot</h1>
+        <p>На сайте собраны прямые трансляции из улиц разных городов мира.</p>
+        <p>Все трансляции находятся в открытых источниках, в данный момент - youtube.com</p>
+        <p>Отзыв о работе сайта можно оставить здесь</p>        
+    </header>
+
+    <div class="reviews">        
+            <button class="review-button" onclick="collectReview()">Оставить отзыв</button>        
+        <div class="reviews-container"></div>
+
+        <script>
+            // Классическая функция для сбора отзыва
+            function collectReview() {
+                const userName = prompt("Пожалуйста, введите ваше имя:");
+                if (!userName) return; // Если пользователь отменил ввод
+
+                const reviewText = prompt("Напишите ваш отзыв:");
+                if (!reviewText) return;
+
+                // Вызываем стрелочную функцию для добавления отзыва
+                addReviewToPage(userName, reviewText);
+            }
+
+            // Стрелочная функция для добавления отзыва на страницу
+            const addReviewToPage = (userName, reviewText) => {
+                const reviewsContainer = document.getElementsByClassName('reviews-container')[0];
+                const currentDate = new Date().toLocaleString();
+
+                reviewsContainer.innerHTML += `
+                        <div class="review">
+                            <div class="review-author">${userName}</div>
+                            <div class="review-date">${currentDate}</div>
+                            <p>${reviewText}</p>
+                        </div>
+                    `;
+            };
+        </script>
+    </div>
+
+    <main>
+        <!-- Добавлен основной контент -->
+        <!-- Здесь будет основной контент страницы -->
+    </main>
+
+    <footer class="main-footer">
+        <!-- Будущий футер -->
+    </footer>
+</body>
+</html>
