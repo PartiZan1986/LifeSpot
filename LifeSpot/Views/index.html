@@ -5,13 +5,15 @@
     <title>LifeSpot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../Static/CSS/Index.css" rel="stylesheet" type="text/css">
-    <script src="../Static/JS/index.js"></script> 
+    <script src="../Static/JS/index.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            //checkAge();
-            handleSession();
-            sessionLog();
-        });
+        // обработка сессии
+        handleSession(logger, checker /* Коллбек-функции */);
+
+        // функция для получения пользовательского ввода
+        const inputParseFunction = function () {
+            return document.getElementsByTagName('input')[0].value.toLowerCase();
+        }
     </script>
 </head>
 <body>

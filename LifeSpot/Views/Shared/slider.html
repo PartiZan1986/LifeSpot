@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Слайдер</title>
+    <style>
+        /* Стили для контейнера слайдера */
+        .slider {
+            width: 80%;
+            max-width: 800px;
+            height: 450px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+            /* Стили для изображений внутри слайдера */
+            .slider img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover; /* Важно: сохраняет пропорции */
+                position: absolute;
+                opacity: 0;
+                transition: opacity 1s ease-in-out;
+            }
+
+                .slider img.active {
+                    opacity: 1;
+                }
+
+        /* Кнопки навигации */
+        .slider-nav {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+            .slider-nav button {
+                background: #4CAF50;
+                color: white;
+                border: none;
+                padding: 8px 16px;
+                margin: 0 5px;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background 0.3s;
+            }
+
+                .slider-nav button:hover {
+                    background: #45a049;
+                }
+    </style>
+    
+</head>
+<body>
+    
+    <div class="slider">
+        <img src="../FotoSlider/spb.jpg" alt="Санкт-Петербург">
+        <img src="../FotoSlider/ny.jpg" alt="Нью-Йорк">
+        <img src="../FotoSlider/london.jpg" alt="Лондон">
+    </div>
+    <div class="slider-nav">
+        <button class="prev-btn">Назад</button>
+        <button class="next-btn">Вперед</button>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const images = document.querySelectorAll('.slider img');
+            let current = 0;
+
+            // Показываем первое изображение
+            if (images.length > 0) images[0].classList.add('active');            
+
+            // Кнопки навигации (опционально)
+            document.querySelector('.prev-btn')?.addEventListener('click', () => {
+                images[current].classList.remove('active');
+                current = (current - 1 + images.length) % images.length;
+                images[current].classList.add('active');
+            });
+
+            document.querySelector('.next-btn')?.addEventListener('click', () => {
+                images[current].classList.remove('active');
+                current = (current + 1) % images.length;
+                images[current].classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
